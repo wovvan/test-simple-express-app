@@ -1,0 +1,17 @@
+.idea
+npm-debug.log
+filled.pdf
+/node_modules
+/test/geth
+config/branch.json
+config/shelterZoomWallet.json
+config/stripe.json
+config/twilio.json
+config/webhookSecret.json
+config/firebase.json
+package-lock.json
+
+# OS
+Thumbs.db
+.tmp
+.tern-port
