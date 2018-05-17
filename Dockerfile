@@ -20,4 +20,4 @@ COPY . .
 
 EXPOSE 3000
 #CMD [ "/bin/bash" ]
-CMD [ "/usr/bin/supervisord", "-c /root/shelterZoom.conf" ]
+CMD [ "/usr/bin/supervisord"]
