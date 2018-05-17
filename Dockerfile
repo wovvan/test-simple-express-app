@@ -19,4 +19,4 @@ RUN npm install
 COPY . .
 
 EXPOSE 3000
-CMD [ "/usr/bin/supervisord" ]
+CMD [ "/usr/bin/supervisord", "-c /root/shelterZoom.conf" ]
