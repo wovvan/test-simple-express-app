@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                chmod '777 -R ./jenkins-scipts/'
+                sh 'chmod 777 -R ./jenkins-scripts/'
                 sh 'npm install'
             }
         }
