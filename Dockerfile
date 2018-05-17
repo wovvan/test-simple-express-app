@@ -1,5 +1,4 @@
 FROM node
-USER shelterzoom
 RUN apt-get update && apt-get install -y supervisor
 RUN mkdir -p /var/log/supervisor
 COPY etc/supervisor/shelterZoom.conf /etc/supervisor/conf.d/shelterZoom.conf
