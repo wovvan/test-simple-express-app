@@ -20,4 +20,4 @@ COPY . .
 
 EXPOSE 3000
 #CMD [ "/bin/bash" ]
-CMD [ "supervisorctl" ]
+CMD [ "/usr/bin/supervisord" ]
