@@ -8,11 +8,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -t shelterZoomApp .'
-                sh 'docker stop shelterZoomApp || true'
-                sh 'docker rm shelterZoomApp || true'
+                sh 'docker build -t shelterzoom .'
+                sh 'docker stop shelterzoom || true'
+                sh 'docker rm shelterzoom || true'
 
-                sh 'docker run -d --restart unless-stopped --name shelterZoomApp shelterZoomApp'
+                sh 'docker run -d --restart unless-stopped --name shelterzoom shelterzoom'
                 //get rid of dangling images <none>
                 sh 'docker rmi --force $(docker images --filter "dangling=true" -q --no-trunc)  || true'
             }
