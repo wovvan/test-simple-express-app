@@ -11,20 +11,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'chmod 777 -R ./jenkins-scripts/'
-                sh 'npm install'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh './jenkins-scripts/test.sh'
-            }
-        }
-        stage('Deliver') {
-            steps {
-                sh './jenkins-scripts/deliver.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './jenkins-scripts/kill.sh'
+                sh 'docker build -t shelterZoomApp .'
+                sh 'docker stop shelterZoomApp || true'
+                sh 'docker rm shelterZoomApp || true'
+
+                sh 'docker run -d --restart unless-stopped --name shelterZoomApp shelterZoomApp'
+                //get rid of dangling images <none>
+                sh 'docker rmi --force $(docker images --filter "dangling=true" -q --no-trunc)  || true'
             }
         }
     }
