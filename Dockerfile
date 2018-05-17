@@ -2,7 +2,7 @@ FROM node
 RUN apt-get update && apt-get install -y supervisor
 RUN mkdir -p /var/log/supervisor
 COPY etc/supervisor/shelterZoom.conf /etc/supervisor/conf.d/shelterZoom.conf
-COPY etc/supervisor/shelterZoom.conf /root/shelterZoom.conf
+#COPY etc/supervisor/shelterZoom.conf /root/shelterZoom.conf
 
 WORKDIR /usr/src/app
 
@@ -20,4 +20,4 @@ COPY . .
 
 EXPOSE 3000
 #CMD [ "/bin/bash" ]
-CMD [ "/usr/bin/supervisord"]
+CMD [ "/usr/bin/supervisord", "-c /etc/supervisor/conf.d/shelterZoom.conf" ]
