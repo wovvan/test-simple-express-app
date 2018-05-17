@@ -20,4 +20,4 @@ COPY . .
 
 EXPOSE 3000
 #CMD [ "/bin/bash" ]
-CMD [ "/usr/bin/supervisord", "-c /etc/supervisor/conf.d/shelterZoom.conf" ]
+CMD [ "supervisorctl", "restart backend" ]
