@@ -19,4 +19,4 @@ RUN npm install
 COPY . .
 
 EXPOSE 3000
-CMD [ "supervisorctl", "restart all" ]
+CMD [ "supervisorctl", "start all" ]
