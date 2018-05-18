@@ -12,7 +12,7 @@ pipeline {
                 sh 'docker stop shelterzoom || true'
                 sh 'docker rm shelterzoom || true'
 
-                sh 'docker run -p 49160:3000 -d --name shelterzoom shelterzoom'
+                sh 'docker run -p 3000:3000 --restart unless-stopped -d --name shelterzoom shelterzoom'
                 //get rid of dangling images <none>
                 sh 'docker rmi --force $(docker images --filter "dangling=true" -q --no-trunc)  || true'
             }
