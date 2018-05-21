@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node boot.js",
     "test": "echo test1111111111111"
   },
   "dependencies": {
