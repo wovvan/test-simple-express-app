@@ -10,6 +10,7 @@ pipeline {
             steps {
                 sh 'docker build -t shelterzoom .'
                 sh 'docker stop shelterzoom || true'
+                sh 'sleep 120'
                 sh 'docker rm shelterzoom || true'
 
                 sh 'docker run -p 3000:3000 --restart unless-stopped -d --name shelterzoom shelterzoom'
