@@ -34,7 +34,7 @@ function stopWorker(worker) {
   worker.disconnect();
   var killTimer = setTimeout(function() {
       console.log('kill process', worker.process.pid);
-      worker.kill();;
+      worker.kill();
   }, 60000);
 
   // Ensure we don't stay up just for this setTimeout
