@@ -75,6 +75,7 @@ process.on('SIGHUP', function() {
 
 // Kill all the workers at once
 process.on('SIGTERM', stopAllWorkers);
+process.on('SIGINT', stopAllWorkers);
 
 // Fork off the initial workers
 forkNewWorkers();
