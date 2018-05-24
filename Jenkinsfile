@@ -13,8 +13,7 @@ pipeline {
                 //sh 'sleep 120'
                 sh 'docker rm shelterzoom || true'
 
-                //--restart unless-stopped
-                sh 'docker run -p 3000:3000 -v /root/logs:/usr/src/app/logs -d --name shelterzoom shelterzoom'
+                sh 'docker run -p 3000:3000 -v /root/logs:/usr/src/app/logs  --restart unless-stopped -d --name shelterzoom shelterzoom'
                 //get rid of dangling images <none>
                 sh 'docker rmi --force $(docker images --filter "dangling=true" -q --no-trunc)  || true'
             }

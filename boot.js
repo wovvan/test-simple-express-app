@@ -33,7 +33,8 @@ function stopWorker(worker) {
   console.log('stopping', worker.process.pid);
   worker.disconnect();
   var killTimer = setTimeout(function() {
-    worker.kill();
+      console.log('kill process', worker.process.pid);
+      worker.kill();
   }, 60000);
 
   // Ensure we don't stay up just for this setTimeout
@@ -54,7 +55,7 @@ function stopAllWorkers() {
   stopping = true;
   console.log('stopping all workers');
   for (var id in cluster.workers) {
-    stopWorker(cluster.workers[id]);;
+    stopWorker(cluster.workers[id]);
   }
 }
 
