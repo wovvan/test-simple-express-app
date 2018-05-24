@@ -4,6 +4,7 @@
 // The master will respond to SIGHUP, which will trigger
 // restarting all the workers and reloading the app.
 
+process.stdin.resume();
 var cluster = require('cluster');
 var workerCount = process.env.WORKER_COUNT || 2;
 
