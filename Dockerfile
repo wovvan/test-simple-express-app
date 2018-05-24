@@ -14,4 +14,5 @@ RUN npm install
 COPY . .
 
 EXPOSE 3000
-CMD supervisord -c /etc/supervisor/supervisord.conf
+#CMD supervisord -c /etc/supervisor/supervisord.conf
+CMD ["supervisord"]
