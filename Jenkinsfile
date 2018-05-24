@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'docker build -t shelterzoom .'
-                sh 'docker stop -t 10 shelterzoom || true'
+                sh 'docker stop -t 60 shelterzoom || true'
                 //sh 'sleep 120'
                 sh 'docker rm shelterzoom || true'
 
