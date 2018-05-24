@@ -78,6 +78,12 @@ process.on('SIGHUP', function() {
 process.on('SIGTERM', stopAllWorkers);
 process.on('SIGINT', stopAllWorkers);
 
+["SIGUSR1", "SIGINT", "SIGTERM", "SIGPIPE", "SIGHUP", "SIGBREAK", "SIGWINCH"].map(function(sigName){
+    process.on(sigName, function(){
+        console.log("Received " + sigName);
+    });
+});
+
 // Fork off the initial workers
 forkNewWorkers();
 console.log('app master', process.pid, 'booted');
