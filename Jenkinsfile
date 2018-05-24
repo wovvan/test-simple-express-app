@@ -9,8 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'docker build -t shelterzoom .'
-                sh 'docker stop -t 20 shelterzoom || true'
-                sh 'sleep 30'
+                sh 'docker stop --time 60 shelterzoom || true'
                 sh 'docker rm shelterzoom || true'
 
                 sh 'docker run -p 3000:3000 -v /root/logs:/usr/src/app/logs  --restart unless-stopped -d --name shelterzoom shelterzoom'
