@@ -8,6 +8,28 @@ process.stdin.resume();
 var cluster = require('cluster');
 var workerCount = process.env.WORKER_COUNT || 2;
 
+["SIGHUP",  "SIGINT", "SIGQUIT", "SIGILL",
+    "SIGTRAP",  "SIGABRT",  "SIGBUS",  "SIGFPE",
+    "SIGKILL", "SIGUSR1", "SIGSEGV",  "SIGUSR2",
+    "SIGPIPE", "SIGALRM",  "SIGTERM", "SIGSTKFLT",
+    "SIGCHLD", "SIGCONT",  "SIGSTOP", "SIGTSTP",
+    "SIGTTIN", "SIGTTOU",  "SIGURG",  "SIGXCPU",
+    "SIGXFSZ", "SIGVTALRM", "SIGPROF", "SIGWINCH",
+    "SIGIO", "SIGPWR", "SIGSYS", "SIGRTMIN",
+    "SIGRTMIN+1", "SIGRTMIN+2", "SIGRTMIN+3", "SIGRTMIN+4",
+    "SIGRTMIN+5", "SIGRTMIN+6", "SIGRTMIN+7", "SIGRTMIN+8",
+    "SIGRTMIN+9", "SIGRTMIN+10", "SIGRTMIN+11", "SIGRTMIN+12",
+    "SIGRTMIN+13", "SIGRTMIN+14", "SIGRTMIN+15", "SIGRTMAX-14",
+    "SIGRTMAX-13", "SIGRTMAX-12", "SIGRTMAX-11", "SIGRTMAX-10",
+    "SIGRTMAX-9", "SIGRTMAX-8", "SIGRTMAX-7", "SIGRTMAX-6",
+    "SIGRTMAX-5", "SIGRTMAX-4", "SIGRTMAX-3", "SIGRTMAX-2",
+    "SIGRTMAX-1", "SIGRTMAX"].map(function(sigName){
+    process.on(sigName, function() {
+        console.log("Received " + sigName);
+    });
+});
+
+/*
 // Defines what each worker needs to run
 // In this case, it's app.js a simple node http app
 cluster.setupMaster({ exec: 'app.js' });
@@ -78,27 +100,7 @@ process.on('SIGHUP', function() {
 process.on('SIGTERM', stopAllWorkers);
 process.on('SIGINT', stopAllWorkers);
 
-["SIGHUP",  "SIGINT", "SIGQUIT", "SIGILL",
-  "SIGTRAP",  "SIGABRT",  "SIGBUS",  "SIGFPE",
-  "SIGKILL", "SIGUSR1", "SIGSEGV",  "SIGUSR2",
-  "SIGPIPE", "SIGALRM",  "SIGTERM", "SIGSTKFLT",
-  "SIGCHLD", "SIGCONT",  "SIGSTOP", "SIGTSTP",
-  "SIGTTIN", "SIGTTOU",  "SIGURG",  "SIGXCPU",
-  "SIGXFSZ", "SIGVTALRM", "SIGPROF", "SIGWINCH",
-  "SIGIO", "SIGPWR", "SIGSYS", "SIGRTMIN",
-  "SIGRTMIN+1", "SIGRTMIN+2", "SIGRTMIN+3", "SIGRTMIN+4",
-  "SIGRTMIN+5", "SIGRTMIN+6", "SIGRTMIN+7", "SIGRTMIN+8",
-  "SIGRTMIN+9", "SIGRTMIN+10", "SIGRTMIN+11", "SIGRTMIN+12",
-  "SIGRTMIN+13", "SIGRTMIN+14", "SIGRTMIN+15", "SIGRTMAX-14",
-  "SIGRTMAX-13", "SIGRTMAX-12", "SIGRTMAX-11", "SIGRTMAX-10",
-  "SIGRTMAX-9", "SIGRTMAX-8", "SIGRTMAX-7", "SIGRTMAX-6",
-  "SIGRTMAX-5", "SIGRTMAX-4", "SIGRTMAX-3", "SIGRTMAX-2",
-  "SIGRTMAX-1", "SIGRTMAX"].map(function(sigName){
-  process.on(sigName, function(){
-    console.log("Received " + sigName);;
-  });
-});
 
 // Fork off the initial workers
 forkNewWorkers();
-console.log('app master', process.pid, 'booted');
+console.log('app master', process.pid, 'booted');*/
