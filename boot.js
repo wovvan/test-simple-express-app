@@ -54,7 +54,7 @@ function stopAllWorkers() {
   stopping = true;
   console.log('stopping all workers');
   for (var id in cluster.workers) {
-    stopWorker(cluster.workers[id]);
+    stopWorker(cluster.workers[id]);;
   }
 }
 
