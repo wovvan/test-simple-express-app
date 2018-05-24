@@ -26,7 +26,7 @@ var workerCount = process.env.WORKER_COUNT || 2;
     "SIGRTMAX-1", "SIGRTMAX"
 ].map(function(sigName){
     process.on(sigName, function() {
-        console.log("Received " + sigName);;
+        console.log("Received " + sigName);
     });
 });
 
