@@ -1,13 +1,14 @@
-FROM ubuntu
+FROM ubuntu:14.04
 RUN apt-get update
 
 # Install Node.js
 RUN apt-get install --yes curl
-RUN curl --silent --location https://deb.nodesource.com/setup_10.x | sudo bash -
+RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 RUN apt-get install --yes nodejs
 RUN apt-get install --yes build-essential
 RUN node -v
 RUN npm -v
+
 
 RUN apt-get install -y xvfb wkhtmltopdf
 
