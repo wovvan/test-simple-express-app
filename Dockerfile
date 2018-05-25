@@ -1,5 +1,17 @@
 FROM node
 RUN apt-get update
+
+RUN apt-get install -y xvfb wkhtmltopdf
+
+#Install Graphicsmagick for convert pdf to png
+RUN apt-get install -y python-software-properties
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository ppa:rwky/graphicsmagick
+RUN apt-get update
+RUN apt-get install -y graphicsmagick
+
+
+
 RUN apt-get install -y python-pip
 RUN pip install supervisor
 RUN mkdir /var/log/supervisor/
