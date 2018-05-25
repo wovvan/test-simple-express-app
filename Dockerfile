@@ -1,5 +1,14 @@
-FROM node
+FROM ubuntu:14.04
 RUN apt-get update
+
+# Install Node.js
+RUN apt-get install --yes curl
+RUN curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
+RUN apt-get install --yes nodejs
+RUN apt-get install --yes build-essential
+RUN node -v
+RUN npm -v
+
 
 RUN apt-get install -y xvfb wkhtmltopdf
 
@@ -9,8 +18,6 @@ RUN apt-get install -y software-properties-common
 RUN add-apt-repository ppa:rwky/graphicsmagick
 RUN apt-get update
 RUN apt-get install -y graphicsmagick
-
-
 
 RUN apt-get install -y python-pip
 RUN pip install supervisor
@@ -26,5 +33,4 @@ RUN npm install
 COPY . .
 
 EXPOSE 3000
-#CMD supervisord -c /etc/supervisor/supervisord.conf
 CMD ["supervisord"]
