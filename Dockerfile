@@ -1,6 +1,8 @@
 FROM ubuntu:14.04
 RUN apt-get update
 
+RUN apt-get install --yes git
+
 # Install Node.js
 RUN apt-get install --yes curl
 RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
