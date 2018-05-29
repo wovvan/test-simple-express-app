@@ -8,7 +8,7 @@ const PORT = 3000;
 // App
 const app = express();
 app.get('/', (req, res) => {
-    res.send('Hello world\n');
+    res.send('Hello world');
 });
 
 app.get('/ping', (req, res) => {
