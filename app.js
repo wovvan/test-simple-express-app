@@ -9,7 +9,10 @@ const PORT = 3000;
 const app = express();
 app.get('/', (req, res) => {
     res.send('Hello world\n');
-    setInterval(() => console.log(new Date()), 2000);
+});
+
+app.get('/ping', (req, res) => {
+    res.send('pong 2');
 });
 
 app.listen(PORT);
